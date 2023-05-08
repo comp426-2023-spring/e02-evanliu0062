@@ -3,8 +3,6 @@
 // https://nodejs.org/docs/latest-v18.x/api/module.html#modulecreaterequirefilename
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-import { rps, rpsls } from './lib/rpsls.js'
-
 // The above two lines allow us to use ES methods and CJS methods for loading
 // dependencies.
 // Load minimist for command line argument parsing
@@ -40,8 +38,7 @@ It also creates logs in a common log format (CLF) so that you can better.
     process.exit(0)
 } 
 // Load express and other dependencies for serving HTML, CSS, and JS files
-import express, { json, urlencoded } from 'express'
-
+import express from 'express'
 // Use CJS __filename and __dirname in ES module scope
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 import path from 'path'
@@ -66,6 +63,45 @@ const app = express()
 const port = args.port || args.p || process.env.PORT || 8080
 // Load app middleware here to serve routes, accept data requests, etc.
 //
+import { rps, rpsls } from "./lib/rpsls.js"
+// Parsing requests with url request
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.get('/app', (req, res) => {
+    res.status(200).send('200 OK').end();
+});
+
+
+app.get('/app/rps', (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.body.shot))).end();
+})
+
+app.get('/app/rpsls', (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.body.shot))).end();
+})
+app.get('/app/rps/play', (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.query.shot))).end();
+})
+app.get('/app/rpsls/play', (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.query.shot))).end();
+})
+app.post('/app/rps/play', (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.body.shot))).end();
+})
+app.post('/app/rpsls/play', (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.body.shot))).end();
+})
+
+app.get('/app/rps/play/:shot', (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.params.shot))).end();
+})
+
+app.get('/app/rpsls/play/:shot', (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.params.shot))).end();
+})
+    
+
 // Create and update access log
 // The morgan format below is the Apache Foundation combined format but with ISO8601 dates
 app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
@@ -74,60 +110,6 @@ app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:htt
 // Serve static files
 const staticpath = args.stat || args.s || process.env.STATICPATH || path.join(__dirname, 'public')
 app.use('/', express.static(staticpath))
-app.use(json())
-app.use(urlencoded({ extended: true }))
-
-
-app.get('/app', (_req, res) => {
-	res.status(200).send("200 OK")
-})
-
-
-app.get('/app/rps', (req, res) => {
-	res.status(200).send(JSON.stringify(rps(req.body.shot)))
-})
-
-
-app.get('/app/rpsls', (req, res) => {
-	res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
-})
-
-
-app.get('/app/rps/play', (req, res) => {
-	res.status(200).send(JSON.stringify(rps(req.query.shot)))
-})
-
-
-app.get('/app/rpsls/play', (req, res) => {
-	res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
-})
-
-
-app.post('/app/rps/play', (req, res) => {
-	res.status(200).send(JSON.stringify(rps(req.body.shot)))
-})
-
-
-app.post('/app/rpsls/play', (req, res) => {
-	res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
-})
-
-
-app.get('/app/rps/play/:shot', (req, res) => {
-    res.status(200).send(JSON.stringify(rps(req.params.shot)))
-})
-
-
-app.get('/app/rpsls/play/:shot', (req, res) => {
-	res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
-})
-
-
-app.get('/app/*', (req, res) => {
-	res.status(404).send('404 NOT FOUND')
-	
-})
-
 // Create app listener
 const server = app.listen(port)
 // Create a log entry on start
