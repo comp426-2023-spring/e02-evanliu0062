@@ -11,44 +11,46 @@
             <tr>
                 <td>
                     <form id="input">
-                        <h2>Select your game!</h2>
+                        <h1 font size="20" style="font-family: Verdana"><font size="20">Ultimate Rock, Paper, Scissors</font></h1>
+                        <h1></h1>
+                        <h3 style="font-family: Arial"><font size="5">Please Pick Your Gamemode</font></h3>
                         <input type="radio" id="rps" name="gameType" value="rps" onclick="toggleShots()">
-                        <label for="rps">Rock, Paper, Scissors!</label>
+                        <label style="font-family: Tahoma" for="rps">Classic: Rock, Paper, Scissors</label>
                         <input type="radio" id="rpsls" name="gameType" value="rpsls" onclick="toggleShots()">
-                        <label for="rpsls">Rock, Paper, Scissors, Lizard, Spock!</label>
-                        <h3>Click Below If You Would Like To Play Against A Computer</h3>
+                        <label style="font-family: Tahoma" for="rpsls">RPSLS: Rock, Paper, Scissors, Lizard, Spock</label>
+                        <h3 style="font-family: Arial"><font size="5">Check Below to Play Against Bot</font></h3>
                         <input type="checkbox" id="opponent" name="opponentSelect" value="opponent" onclick="toggleShots()">
-                        <label for="opponent">Play against a computer?</label>
+                        <label style="font-family: Tahoma" for="opponent">AI Opponent</label>
                         <div id="shots">
-                            <h4>Make Your Choice!</h4>
+                            <h3 style="font-family: Arial"><font size="5">Choose Your Selection</font></h3>
                             <input type="radio" id="rock" name="shot" value="rock" class="rpsShot" >
-                            <label class="shot">Rock</label>
+                            <label style="font-family: Tahoma" class="shot">Rock</label>
                             <input type="radio" id="paper" name="shot" value="paper" class="rpsShot">
-                            <label class="shot">Paper</label>
+                            <label style="font-family: Tahoma" class="shot">Paper</label>
                             <input type="radio" id="scissors" name="shot" value="scissors" class="rpsShot">
-                            <label class="shot">Scissors</label>
+                            <label style="font-family: Tahoma" class="shot">Scissors</label>
                             <div id="rpslsShots">
                                 <input type="radio" id="lizard" name="shot" value="lizard" class="rpslsShot">
-                                <label id="lizardLab" class="rpslsShot">Lizard</label>
+                                <label style="font-family: Tahoma" id="lizardLab" class="rpslsShot">Lizard</label>
                                 <input type="radio" id="spock" name="shot" value="spock" class="rpslsShot">
-                                <label id="spockLab" class="rpslsShot">Spock</label>
+                                <label style="font-family: Tahoma" id="spockLab" class="rpslsShot">Spock</label>
                             </div>
                         </div>
                         <button type="submit" style="display:none">Submit</button>
                     </form>
                     <button type="button" id="play" onclick="playGame()">Play</button>
-                    <button type="button" id="startOver" onclick="startOver()">Start Over</button>
-                    <button type="button" id="help" onclick="help()">Rules</button>
+                    <button type="button" id="startOver" onclick="startOver()">Reset</button>
+                    <button type="button" id="help" onclick="window.location.href='rules.html'">Rules</button>
                     <p id="results" class="results">Results</p>
                     <table>
                         <tbody>
                         <tr>
                             <td>
-                                <h4 id="shotImgLab">You:</h4>
+                                <h4 style="font-family: Arial" id="shotImgLab">You:</h4>
                                 <img src="img/rock.jpg" alt="image" id="shotImg" class="shot">
                             </td>
                             <td>
-                                <h4 id="oppShotImgLab">Opponent:</h4>
+                                <h4 style="font-family: Arial" id="oppShotImgLab">Opponent:</h4>
                                 <img src="img/rock.jpg" alt="image" id="oppShotImg" class="shot">
                             </td>
                         </tr>
@@ -57,14 +59,14 @@
                 </td>
                 <td>
                     <div id="rules">
-                        <h3>Rules for Rock Paper Scissors:</h3>
-                            <ul>
+                        <h3 style="font-family: Arial">Rules for Rock Paper Scissors:</h3>
+                            <ul style="font-family: Tahoma">
                                 <li>Scissors CUTS Paper</li>
                                 <li>Paper COVERS Rock</li>
                                 <li>Rock CRUSHES Scissors</li>
                             </ul>
-                            <h3>Rules for the Lizard-Spock Expansion of Rock Paper Scissors:</h3>
-                            <ul>
+                            <h3 style="font-family: Arial">Rules for the Lizard-Spock Expansion of Rock Paper Scissors:</h3>
+                            <ul style="font-family: Tahoma">
                                 <li>Scissors CUTS Paper</li>
                                 <li>Paper COVERS Rock</li>
                                 <li>Rock SMOOSHES Lizard</li>

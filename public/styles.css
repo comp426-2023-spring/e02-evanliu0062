@@ -1,7 +1,7 @@
 body {
-  background-color: rgb(92, 134, 126);
+  background-color: rgb(122, 122, 122);
+  align-items: center;
 }
-
 
 p.results {
   font-size: 16px; /* Same as "font-size: larger" */
@@ -10,7 +10,7 @@ p.results {
   border-style: groove; /* Same as "border-style: groove" */
   border-radius: 20px; /* Updated to 20px to match the button style */
   border-width: 5px; /* Updated to 5px to match the button style */
-  border-color: blue; /* Same as "border-color: blue" */
+  border-color: #208a8a; /* Same as "border-color: blue" */
   padding: 10px; /* Added padding for better spacing */
   margin: 10px 0; /* Added margin for better spacing */
 }
@@ -20,19 +20,16 @@ img.shot {
 }
 
 button {
-  background-color: #999999; /* Matte gray */
-  border: none;
+  background-color: #208a8a;
+  border: black;
   color: white;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 20px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  transition: background-color 0.3s ease;
+  font-size: 14px;
 }
-
 button:hover {
-  background-color: #00ff7f; /* Light green */
+  background-color:#0acaca;
+  transition: 0.3s;
 }

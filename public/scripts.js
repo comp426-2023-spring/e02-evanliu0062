@@ -68,7 +68,7 @@ async function playGame () {
   let response = await fetch(url)
   let result = await response.json()
 
-  resultString = 'You selected ' + result.player
+  resultString = 'You picked ' + result.player
 
   document.getElementById("shotImg").setAttribute("src", "img/"+result.player+".jpg");
   document.getElementById("shotImgLab").style.display = "block"
@@ -77,7 +77,7 @@ async function playGame () {
   document.getElementById("oppShotImgLab").style.display = "none"
 
   if (oppCheck) {
-      resultString = resultString + ' and your opponent selected ' + result.opponent + '. Result: ' + result.result;
+      resultString = resultString + ' and the Bot picked ' + result.opponent + ', so you ' + result.result;
       document.getElementById("oppShotImg").setAttribute("src", "img/"+result.opponent+".jpg");
       document.getElementById("oppShotImgLab").style.display = "block"
       document.getElementById("oppShotImg").style.display = "inline"
