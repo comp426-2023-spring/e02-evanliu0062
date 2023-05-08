@@ -1,6 +1,7 @@
 body {
   background-color: rgb(122, 122, 122);
   align-items: center;
+  font-family: Arial;
 }
 
 p.results {
